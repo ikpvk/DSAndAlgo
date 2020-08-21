@@ -24,10 +24,19 @@ public class SingleLinkedList {
 	
 	public void displayList() {
 		Node iterator = first;
-		int count = 1;
 		while(null!=iterator) {
-			System.out.println(count++ + " : "+iterator.data);
+			System.out.println("{ "+iterator.data+" }");
 			iterator = iterator.next;
 		}
+	}
+
+	public void insertLast(int data) {
+		Node newNode = new Node(data);
+		Node iterator = first;
+		while(null!=iterator.next) {
+			iterator = iterator.next;
+		}
+		iterator.next = newNode;
+		System.out.println("New node "+ data+" inserted to the end");
 	}
 }

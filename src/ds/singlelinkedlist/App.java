@@ -6,13 +6,16 @@ public class App {
 		
 		SingleLinkedList myList = new SingleLinkedList();
 		myList.insertFirst(2);
-		myList.insertFirst(3);
-		myList.insertFirst(4);
-		myList.insertFirst(5);
+		myList.insertLast(3);
+		myList.insertLast(4);
+		myList.insertLast(5);
 		myList.displayList();
 		myList.deleteFirst();
 		myList.displayList();
-
+		myList.insertFirst(2);
+		myList.insertFirst(1);
+		myList.insertLast(6);
+		myList.displayList();
 	}
 
 }
