@@ -7,6 +7,7 @@ public class BST {
         return null == root;
     }
 
+    //This method inserts a new node into the binary tree
     public void insert(int key, String value) {
         Node newNode = new Node(key, value);
         if (isEmpty()) {
@@ -34,6 +35,7 @@ public class BST {
         System.out.println("New node {" + newNode.key + ":" + newNode.value + "} inserted");
     }
 
+    //This method finds the min value in a binary tree
     public void findMin() {
         if (isEmpty()) {
             System.out.println("Empty BST");
@@ -46,6 +48,7 @@ public class BST {
         }
     }
 
+    //This method finds the max value in a binary tree
     public void findMax() {
         if (isEmpty()) {
             System.out.println("Empty BST");
