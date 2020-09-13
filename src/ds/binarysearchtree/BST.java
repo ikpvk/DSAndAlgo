@@ -60,4 +60,73 @@ public class BST {
             System.out.println("Max node : {" + traverser.key + ":" + traverser.value + "}");
         }
     }
+
+    //This method deletes a node from the BST
+    public void deleteNode(Node elementToDelete) {
+        if(isEmpty()) {
+            System.out.println("Empty BST");
+        } else {
+            Node parent = root, traverser = root;
+            boolean isLeftChild = false;
+            while(null!=traverser && elementToDelete.key!=traverser.key) {
+                parent = traverser;
+                if(elementToDelete.key< traverser.key){
+                    isLeftChild = true;
+                    traverser = traverser.leftChild;
+                } else {
+                    isLeftChild = false;
+                    traverser = traverser.leftChild;
+                }
+            }
+
+            int numberOfChildren = getNumberOfChildren(elementToDelete);
+            switch (numberOfChildren) {
+                case 0:
+                    if(root==traverser){
+                        root= null;
+                    } else if(isLeftChild) {
+                        parent.leftChild = null;
+                    } else {
+                        parent.rightChild = null;
+                    }
+                    break;
+                case 1:
+                    Node replacerChild;
+                    if(null!=traverser.leftChild) {
+                        replacerChild = traverser.leftChild;
+                    } else {
+                        replacerChild = traverser.rightChild;
+                    }
+                    if(root == traverser) {
+                        root = replacerChild;
+                    } else if(isLeftChild) {
+                        parent.leftChild = replacerChild;
+                    } else {
+                        parent.rightChild = replacerChild;
+                    }
+
+            }
+        }
+
+    }
+
+    //This method return the number of children the node has
+    public int getNumberOfChildren(Node node) {
+        int numberOfChildren = 0;
+        if(null!=node) {
+            if(null!=node.leftChild) {
+                numberOfChildren++;
+            }
+            if(null!=node.rightChild) {
+                numberOfChildren++;
+            }
+        }
+        return numberOfChildren;
+    }
+
+    private Node getSuccessor(Node nodeToDelete) {
+        Node successor = nodeToDelete;
+
+        return successor;
+    }
 }
