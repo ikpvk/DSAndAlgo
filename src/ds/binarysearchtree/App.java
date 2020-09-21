@@ -10,5 +10,8 @@ public class App {
         bst.insert(5,"Five");
         bst.findMax();
         bst.findMin();
+        bst.deleteNode(20);
+        bst.findMax();
+        bst.findMin();
     }
 }

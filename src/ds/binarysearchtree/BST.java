@@ -62,7 +62,8 @@ public class BST {
     }
 
     //This method deletes a node from the BST
-    public void deleteNode(Node elementToDelete) {
+    public void deleteNode(int keyToDelete) {
+        Node elementToDelete = new Node(keyToDelete,null);
         if(isEmpty()) {
             System.out.println("Empty BST");
         } else {
@@ -79,7 +80,7 @@ public class BST {
                 }
             }
 
-            int numberOfChildren = getNumberOfChildren(elementToDelete);
+            int numberOfChildren = getNumberOfChildren(traverser);
             switch (numberOfChildren) {
                 case 0:
                     if(root==traverser){
@@ -104,7 +105,19 @@ public class BST {
                     } else {
                         parent.rightChild = replacerChild;
                     }
-
+                    break;
+                case 2:
+                    Node successor = getSuccessor(traverser);
+                    if(root==traverser) {
+                        root = successor;
+                    } else if(isLeftChild) {
+                        parent.leftChild = successor;
+                    } else {
+                        parent.rightChild = successor;
+                    }
+                    successor.leftChild = traverser.leftChild;
+                    successor.rightChild = traverser.rightChild;
+                    break;
             }
         }
 
@@ -125,8 +138,13 @@ public class BST {
     }
 
     private Node getSuccessor(Node nodeToDelete) {
-        Node successor = nodeToDelete;
-
+        Node successor = nodeToDelete.rightChild;
+        Node parent=successor;
+        while(null!=successor.leftChild) {
+            parent = successor;
+            successor = successor.leftChild;
+        }
+        parent.leftChild = successor.rightChild;
         return successor;
     }
 }
