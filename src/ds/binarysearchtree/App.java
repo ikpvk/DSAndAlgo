@@ -8,10 +8,13 @@ public class App {
         bst.insert(10,"Ten");
         bst.insert(20,"Twenty");
         bst.insert(5,"Five");
+        bst.displayTree();
         bst.findMax();
         bst.findMin();
         bst.deleteNode(20);
+        bst.insert(4,"Four");
         bst.findMax();
         bst.findMin();
+        bst.displayTree();
     }
 }
